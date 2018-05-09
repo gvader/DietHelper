@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DietHelper</string>
+    <string name="action_settings">Settings</string>
+    <string name="browse_available_meals_button_string">Browse Available Meals</string>
+    <string name="enter_diet_log_button_string">Enter Diet Log</string>
+    <string name="title_activity_meal_list">MealListActivity</string>
+</resources>
