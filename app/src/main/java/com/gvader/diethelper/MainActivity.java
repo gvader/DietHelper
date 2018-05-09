@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.gvader.diethelper.meallist.MealListActivity;
+
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.toString();
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
         Button MealListButton = findViewById(R.id.MealListButton);
