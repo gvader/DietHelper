@@ -1,4 +1,4 @@
-package com.gvader.diethelper.meallist;
+package com.gvader.diethelper.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

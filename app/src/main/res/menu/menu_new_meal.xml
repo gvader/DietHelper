@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.gvader.diethelper.meallist.NewMealActivity">
+    tools:context="com.gvader.diethelper.ui.NewMealActivity">
     <item
         android:id="@+id/action_add_meal"
         android:orderInCategory="100"

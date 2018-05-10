@@ -1,4 +1,4 @@
-package com.gvader.diethelper.meallist;
+package com.gvader.diethelper.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.gvader.diethelper.R;
-import com.gvader.diethelper.meallist.data.Meal;
+import com.gvader.diethelper.db.entity.MealEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,32 +20,36 @@ class ListViewAdapter extends BaseAdapter {
     private static final String TAG = ListViewAdapter.class.toString();
     private Context context;
     private LayoutInflater inflater;
-    private List<Meal> mealList = null;
-    private ArrayList<Meal> cachedMealList;
+    private List<MealEntity> mealEntityList = null;
+    private ArrayList<MealEntity> cachedMealEntityList;
 
-    public ListViewAdapter(Context context, ArrayList<Meal> data) {
+    ListViewAdapter(Context context) {
         this.context = context;
-        this.mealList = data;
         this.inflater = LayoutInflater.from(context);
-        this.cachedMealList = new ArrayList<>();
-        this.cachedMealList.addAll(data);
+        this.cachedMealEntityList = new ArrayList<>();
+    }
+
+    public void setMeals(List<MealEntity> meals) {
+        this.mealEntityList = meals;
+        this.cachedMealEntityList.addAll(meals);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder {
         TextView name;
         TextView category;
-        TextView descritption;
+        TextView description;
         TextView dishes;
     }
 
     @Override
     public int getCount() {
-        return mealList.size();
+        return (mealEntityList != null) ? mealEntityList.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return mealList.get(position);
+        return mealEntityList.get(position);
     }
 
     @Override
@@ -62,25 +66,24 @@ class ListViewAdapter extends BaseAdapter {
 
             holder.name = view.findViewById(R.id.MealItemName);
             holder.category = view.findViewById(R.id.MealItemCategory);
-            holder.descritption = view.findViewById(R.id.MealItemDescription);
+            holder.description = view.findViewById(R.id.MealItemDescription);
             holder.dishes = view.findViewById(R.id.MealItemDishes);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        final Meal currentMeal = mealList.get(position);
+        final MealEntity currentMealEntity = mealEntityList.get(position);
 
-        holder.name.setText(currentMeal.getName());
-        holder.category.setText(currentMeal.getCategory());
-        holder.descritption.setText(currentMeal.getDescription());
-        holder.dishes.setText(currentMeal.getDishesNames());
+        holder.name.setText(currentMealEntity.getName());
+        holder.category.setText(currentMealEntity.getCategory());
+        holder.description.setText(currentMealEntity.getDescription());
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SingleMealViewActivity.class);
-                intent.putExtra("name", (currentMeal.getName()));
+                intent.putExtra("name", (currentMealEntity.getName()));
 
                 context.startActivity(intent);
             }
@@ -94,26 +97,23 @@ class ListViewAdapter extends BaseAdapter {
         // FIXME: Improve !!!!
         Log.d(TAG, "Filtering " + text);
         text = text.toLowerCase(Locale.getDefault());
-        mealList.clear();
+        mealEntityList.clear();
         if (text.length() == 0) {
             Log.d(TAG, "Empty text");
-            mealList.addAll(cachedMealList);
+            mealEntityList.addAll(cachedMealEntityList);
         } else {
             Log.d(TAG, "In Else");
-            for(Meal meal : cachedMealList) {
-                Log.d(TAG, "In For checking meal " +meal.getName());
-                if (meal.getName().toLowerCase(Locale.getDefault()).contains(text)) {
+            for(MealEntity mealEntity : cachedMealEntityList) {
+                Log.d(TAG, "In For checking mealEntity " + mealEntity.getName());
+                if (mealEntity.getName().toLowerCase(Locale.getDefault()).contains(text)) {
                     Log.d(TAG, "Adding name " + text);
-                    mealList.add(meal);
-                } else if (meal.getCategory().toLowerCase(Locale.getDefault()).contains(text)) {
+                    mealEntityList.add(mealEntity);
+                } else if (mealEntity.getCategory().toLowerCase(Locale.getDefault()).contains(text)) {
                     Log.d(TAG, "Adding category " + text);
-                    mealList.add(meal);
-                } else if (meal.getDescription().toLowerCase(Locale.getDefault()).contains(text)) {
+                    mealEntityList.add(mealEntity);
+                } else if (mealEntity.getDescription().toLowerCase(Locale.getDefault()).contains(text)) {
                     Log.d(TAG, "Adding description " + text);
-                    mealList.add(meal);
-                } else if (meal.getDishesNames().toLowerCase(Locale.getDefault()).contains(text)) {
-                    Log.d(TAG, "Adding Dishes names" + text);
-                    mealList.add(meal);
+                    mealEntityList.add(mealEntity);
                 } else {
                     Log.d(TAG, "Not adding nothing");
                 }

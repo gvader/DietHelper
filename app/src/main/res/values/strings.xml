@@ -7,16 +7,17 @@
     <string name="meal_item_name_label">Name of the Meal: </string>
     <string name="meal_item_category_label">Meal category:</string>
     <string name="meal_item_description_label">Description:</string>
-    <string name="menu_item_dishes_label">Dishes in the meal:</string>
+    <string name="menu_item_dishes_label">Dishes in the mealEntity:</string>
     <string name="meal_dish_list_finalizer">, and more…</string>
     <string name="title_activity_simle_meal_view">SimleMealViewActivity</string>
     <string name="simple_meal_name_label">Meal Name</string>
     <string name="title_activity_new_meal">NewMealActivity</string>
-    <string name="action_add_meal">Add new meal</string>
-    <string name="new_meal_name">Name of the meal</string>
+    <string name="action_add_meal">Add new mealEntity</string>
+    <string name="new_meal_name">Name of the mealEntity</string>
     <string name="new_meal_category">Meal category</string>
-    <string name="new_meal_description">Description of the meal</string>
-    <string name="new_meal_dish_list">List of dishes in the meal</string>
+    <string name="new_meal_description">Description of the mealEntity</string>
+    <string name="new_meal_dish_list">List of dishes in the mealEntity</string>
     <string name="new_meal_not_added_msg">Meal not added...</string>
-    <string name="main_activity_new_meal_success_msg">New meal added successfully !!!</string>
+    <string name="meal_list_activity_new_meal_success_msg">New mealEntity added successfully !!!</string>
+    <string name="meal_list_activity_new_meal_empty_not_saved_msg">Meal not added. Empty meal name or category.</string>
 </resources>

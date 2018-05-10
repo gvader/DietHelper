@@ -1,4 +1,4 @@
-package com.gvader.diethelper;
+package com.gvader.diethelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.gvader.diethelper.meallist.MealListActivity;
+import com.gvader.diethelper.R;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.toString();
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         MealListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Switching to Meal List Activity");
+                Log.d(TAG, "Switching to MealEntity List Activity");
                 Intent intent = new Intent(getBaseContext(), MealListActivity.class);
                 startActivity(intent);
             }
