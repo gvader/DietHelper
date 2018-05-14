@@ -2,11 +2,12 @@ package com.gvader.diethelper.ui.MealList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.gvader.diethelper.R;
@@ -16,80 +17,86 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-class ListViewAdapter extends BaseAdapter {
-    private static final String TAG = ListViewAdapter.class.toString();
+class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
+    private static final String TAG = MealListAdapter.class.toString();
     private Context context;
-    private LayoutInflater inflater;
     private List<MealEntity> mealEntityList = null;
     private ArrayList<MealEntity> cachedMealEntityList;
 
-    ListViewAdapter(Context context) {
+    MealListAdapter(Context context) {
         this.context = context;
-        this.inflater = LayoutInflater.from(context);
         this.cachedMealEntityList = new ArrayList<>();
     }
 
     public void setMeals(List<MealEntity> meals) {
+        Log.d(TAG, "Setting meals... meals count: " + meals.size());
         this.mealEntityList = meals;
         this.cachedMealEntityList.addAll(meals);
         notifyDataSetChanged();
     }
 
-    public class ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView category;
         TextView description;
         TextView dishes;
-    }
+        View parent;
 
-    @Override
-    public int getCount() {
-        return (mealEntityList != null) ? mealEntityList.size() : 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mealEntityList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(final int position, View view, ViewGroup parent) {
-        final ViewHolder holder;
-        if (view == null) {
-            holder = new ViewHolder();
-            view = inflater.inflate(R.layout.meal_list_item_layout, null);
-
-            holder.name = view.findViewById(R.id.MealItemName);
-            holder.category = view.findViewById(R.id.MealItemCategory);
-            holder.description = view.findViewById(R.id.MealItemDescription);
-            holder.dishes = view.findViewById(R.id.MealItemDishes);
-            view.setTag(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
+        ViewHolder(View view) {
+            super(view);
+            parent = view;
+            name = view.findViewById(R.id.MealItemName);
+            category = view.findViewById(R.id.MealItemCategory);
+            description = view.findViewById(R.id.MealItemDescription);
+            dishes = view.findViewById(R.id.MealItemDishes);
         }
+    }
 
-        final MealEntity currentMealEntity = mealEntityList.get(position);
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.meal_list_item_layout, parent, false);
 
-        holder.name.setText(currentMealEntity.getName());
-        holder.category.setText(currentMealEntity.getCategory());
-        holder.description.setText(currentMealEntity.getDescription());
+        return new ViewHolder(itemView);
+    }
 
-        view.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final MealEntity meal = mealEntityList.get(position);
+
+        holder.name.setText(meal.getName());
+        holder.category.setText(meal.getCategory());
+        holder.description.setText(meal.getDescription());
+
+        holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SingleMealViewActivity.class);
-                intent.putExtra("id", (currentMealEntity.getId()));
+                intent.putExtra("id", (meal.getId()));
 
                 context.startActivity(intent);
             }
         });
+    }
 
-        return view;
+    @Override
+    public int getItemCount() {
+         return (mealEntityList != null) ? mealEntityList.size() : 0;
+    }
+
+    public void removeItem(int position) {
+        mealEntityList.remove(position);
+        // notify the item removed by position
+        // to perform recycler view delete animations
+        // NOTE: don't call notifyDataSetChanged()
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(MealEntity item, int position) {
+        mealEntityList.add(position, item);
+        // notify item added by position
+        notifyItemInserted(position);
     }
 
     public void filter(String text) {

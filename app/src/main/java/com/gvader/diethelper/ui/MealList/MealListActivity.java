@@ -8,13 +8,14 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.gvader.diethelper.R;
@@ -41,7 +42,7 @@ public class MealListActivity extends AppCompatActivity {
     @Retention(RetentionPolicy.SOURCE)
     public @interface MEAL_CATEGORIES {}
 
-    private ListViewAdapter adapter;
+    private MealListAdapter adapter;
     private EditText searchView;
 
     private MealListViewModel mealListViewModel;
@@ -63,7 +64,7 @@ public class MealListActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter = new ListViewAdapter(this);
+        adapter = new MealListAdapter(this);
 
         mealListViewModel = ViewModelProviders.of(this).get(MealListViewModel.class);
         mealListViewModel.getAllMeals().observe(this, new Observer<List<MealEntity>>() {
@@ -73,9 +74,10 @@ public class MealListActivity extends AppCompatActivity {
             }
         });
 
-        ListView listView = findViewById(R.id.MealListListView);
+        RecyclerView mealListView = findViewById(R.id.MealListRecyclerView);
 
-        listView.setAdapter(adapter);
+        mealListView.setAdapter(adapter);
+        mealListView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
 
         searchView = findViewById(R.id.MealListSearch);
 

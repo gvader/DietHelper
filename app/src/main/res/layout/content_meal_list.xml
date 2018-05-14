@@ -18,13 +18,13 @@
             <requestFocus/>
         </EditText>
 
-        <ListView
-            android:id="@+id/MealListListView"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/MealListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/MealListSearch">
 
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
