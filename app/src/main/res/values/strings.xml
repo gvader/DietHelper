@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">DietHelper</string>
     <string name="action_settings">Settings</string>
-    <string name="browse_available_meals_button_string">Browse Available Meals</string>
-    <string name="enter_diet_log_button_string">Enter Diet Log</string>
+    <string name="main_activity_browse_available_meals_button">Browse Available Meals</string>
+    <string name="main_activity_enter_diet_log_button">Enter Diet Log</string>
     <string name="title_activity_meal_list">MealListActivity</string>
     <string name="meal_item_name_label">Name of the Meal: </string>
     <string name="meal_item_category_label">Meal category:</string>
@@ -20,4 +20,5 @@
     <string name="new_meal_not_added_msg">Meal not added...</string>
     <string name="meal_list_activity_new_meal_success_msg">New mealEntity added successfully !!!</string>
     <string name="meal_list_activity_new_meal_empty_not_saved_msg">Meal not added. Empty meal name or category.</string>
+    <string name="main_activity_week_planner_button">Plan your weekly diet</string>
 </resources>

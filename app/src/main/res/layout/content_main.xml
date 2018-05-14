@@ -25,13 +25,20 @@
             android:id="@+id/MealListButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/browse_available_meals_button_string" />
+            android:text="@string/main_activity_browse_available_meals_button" />
+
+        <Button
+            android:id="@+id/WeekPlannerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MealListButton"
+            android:text="@string/main_activity_week_planner_button" />
 
         <Button
             android:id="@+id/DietLogButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/MealListButton"
-            android:text="@string/enter_diet_log_button_string" />
+            android:layout_below="@id/WeekPlannerButton"
+            android:text="@string/main_activity_enter_diet_log_button" />
     </RelativeLayout>
 </RelativeLayout>
