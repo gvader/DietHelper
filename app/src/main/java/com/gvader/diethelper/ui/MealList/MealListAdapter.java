@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gvader.diethelper.R;
@@ -36,10 +38,9 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        TextView category;
-        TextView description;
-        TextView dishes;
+        TextView name, category, description, dishes;
+        ImageView thumbnail;
+        RelativeLayout viewForeground, viewBackground;
         View parent;
 
         ViewHolder(View view) {
@@ -49,6 +50,9 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
             category = view.findViewById(R.id.MealItemCategory);
             description = view.findViewById(R.id.MealItemDescription);
             dishes = view.findViewById(R.id.MealItemDishes);
+            thumbnail = view.findViewById(R.id.MealItemThumbnail);
+            viewForeground = view.findViewById(R.id.MealItemForeground);
+            viewBackground = view.findViewById(R.id.MealItemBackground);
         }
     }
 
@@ -56,7 +60,7 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.meal_list_item_layout, parent, false);
+                .inflate(R.layout.meal_list_item, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -97,6 +101,10 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
         mealEntityList.add(position, item);
         // notify item added by position
         notifyItemInserted(position);
+    }
+
+    public MealEntity getItem(int position) {
+        return ((mealEntityList != null) && (position < mealEntityList.size())) ? mealEntityList.get(position) : null;
     }
 
     public void filter(String text) {
