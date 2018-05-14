@@ -6,18 +6,23 @@
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <ImageView
-        android:id="@+id/WelcomeImage"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/burger" />
-
     <RelativeLayout
-        android:id="@+id/ButtonsLayout"
+        android:id="@+id/MainActivityImageWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/MainActivityWelcomeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/burger" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/MainActivityButtonsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/WelcomeImage"
+        android:layout_below="@id/MainActivityImageWrapper"
         android:layout_alignParentBottom="true"
         android:gravity="bottom">
 
