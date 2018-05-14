@@ -1,4 +1,4 @@
-package com.gvader.diethelper.ui;
+package com.gvader.diethelper.ui.MealList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import com.gvader.diethelper.R;
 
 public class NewMealActivity extends AppCompatActivity {
     private static final String TAG = NewMealActivity.class.toString();
-    private static final String EXTRA_PREFIX = "com.gvader.diethelper.ui.NewMealActivity.";
+    private static final String EXTRA_PREFIX = "com.gvader.diethelper.ui.MealList.NewMealActivity.";
     public static final String NEW_MEAL_NAME_EXTRA = EXTRA_PREFIX + "meal_name";
     public static final String NEW_MEAL_CATEGORY_EXTRA = EXTRA_PREFIX + "meal_category";
     public static final String NEW_MEAL_DESC_EXTRA = EXTRA_PREFIX + "meal_description";
@@ -48,7 +48,7 @@ public class NewMealActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_add_meal:
                 Log.d(TAG, "Adding new to the list");
-                //if (this.addMeal()) {
+
                 Intent replyIntent = new Intent();
                 if(TextUtils.isEmpty(nameText.getText()) && TextUtils.isEmpty(categoryText.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
@@ -63,10 +63,6 @@ public class NewMealActivity extends AppCompatActivity {
                     setResult(RESULT_OK, replyIntent);
                 }
                 finish();
-                /*} else {
-                    Toast.makeText(this, R.string.new_meal_not_added_msg, Toast.LENGTH_LONG).show();
-                    return true;
-                }*/
 
             default:
                 // If we got here, the user's action was not recognized.

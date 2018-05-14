@@ -10,11 +10,11 @@ import com.gvader.diethelper.db.entity.MealEntity;
 
 import java.util.List;
 
-public class MealViewModel extends AndroidViewModel {
+public class MealListViewModel extends AndroidViewModel {
     private DataRepository repository;
     private LiveData<List<MealEntity>> allMeals;
 
-    public MealViewModel(@NonNull Application application) {
+    public MealListViewModel(@NonNull Application application) {
         super(application);
         repository = new DataRepository(application);
         allMeals = repository.getAllMeals();
@@ -26,5 +26,9 @@ public class MealViewModel extends AndroidViewModel {
 
     public void insertMeal(MealEntity meal) {
         repository.insertMeal(meal);
+    }
+
+    public void deleteMeal(MealEntity meal) {
+        repository.deleteMeal(meal);
     }
 }

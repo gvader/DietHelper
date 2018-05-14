@@ -1,4 +1,4 @@
-package com.gvader.diethelper.ui;
+package com.gvader.diethelper.ui.MealList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -83,7 +83,7 @@ class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SingleMealViewActivity.class);
-                intent.putExtra("name", (currentMealEntity.getName()));
+                intent.putExtra("id", (currentMealEntity.getId()));
 
                 context.startActivity(intent);
             }

@@ -12,7 +12,7 @@ import com.gvader.diethelper.db.dao.DishDao;
 import com.gvader.diethelper.db.dao.MealDao;
 import com.gvader.diethelper.db.entity.DishEntity;
 import com.gvader.diethelper.db.entity.MealEntity;
-import com.gvader.diethelper.ui.MealListActivity;
+import com.gvader.diethelper.ui.MealList.MealListActivity;
 
 @Database(
         entities = {

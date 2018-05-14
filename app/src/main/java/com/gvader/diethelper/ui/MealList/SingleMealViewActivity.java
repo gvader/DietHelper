@@ -1,4 +1,4 @@
-package com.gvader.diethelper.ui;
+package com.gvader.diethelper.ui.MealList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ public class SingleMealViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String mealName;
+        int mealName;
 
         TextView tvName;
 
@@ -38,13 +38,13 @@ public class SingleMealViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
-        mealName = i.getStringExtra("name");
+        mealName = i.getIntExtra("id", 0);
 
         Log.d(TAG, "Showing meal detail for meal: " + mealName);
 
         tvName = findViewById(R.id.SimpleMealName);
 
-        tvName.setText(mealName);
+        tvName.setText(String.format("%d", mealName));
     }
 
 }

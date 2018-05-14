@@ -1,4 +1,4 @@
-package com.gvader.diethelper.ui;
+package com.gvader.diethelper.ui.MealList;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.gvader.diethelper.R;
 import com.gvader.diethelper.db.entity.MealEntity;
-import com.gvader.diethelper.viewmodel.MealViewModel;
+import com.gvader.diethelper.viewmodel.MealListViewModel;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -29,6 +29,7 @@ import java.util.Locale;
 public class MealListActivity extends AppCompatActivity {
     private static final String TAG = MealListActivity.class.toString();
 
+    // TODO: Move meal categories to editable option in settings.
     public static final String MEAL_CATEGORY_BREAKFAST = "Breakfast";
     public static final String MEAL_CATEGORY_2ND_BREAKFAST = "Second Breakfast";
     public static final String MEAL_CATEGORY_LUNCH = "Lunch";
@@ -43,7 +44,7 @@ public class MealListActivity extends AppCompatActivity {
     private ListViewAdapter adapter;
     private EditText searchView;
 
-    private MealViewModel mealViewModel;
+    private MealListViewModel mealListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,8 @@ public class MealListActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter(this);
 
-        mealViewModel = ViewModelProviders.of(this).get(MealViewModel.class);
-        mealViewModel.getAllMeals().observe(this, new Observer<List<MealEntity>>() {
+        mealListViewModel = ViewModelProviders.of(this).get(MealListViewModel.class);
+        mealListViewModel.getAllMeals().observe(this, new Observer<List<MealEntity>>() {
             @Override
             public void onChanged(@Nullable List<MealEntity> mealEntities) {
                 adapter.setMeals(mealEntities);
@@ -108,7 +109,7 @@ public class MealListActivity extends AppCompatActivity {
                     data.getStringExtra(NewMealActivity.NEW_MEAL_CATEGORY_EXTRA),
                     data.getStringExtra(NewMealActivity.NEW_MEAL_DESC_EXTRA)
             );
-            mealViewModel.insertMeal(meal);
+            mealListViewModel.insertMeal(meal);
             Toast.makeText(this, R.string.meal_list_activity_new_meal_success_msg, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(

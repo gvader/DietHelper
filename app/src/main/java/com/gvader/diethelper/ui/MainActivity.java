@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.gvader.diethelper.R;
+import com.gvader.diethelper.ui.MealList.MealListActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.toString();

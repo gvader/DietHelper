@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MealListActivity"
+            android:name=".ui.MealList.MealListActivity"
             android:label="@string/title_activity_meal_list"
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -30,23 +30,23 @@
                 android:value="com.gvader.diethelper.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.SingleMealViewActivity"
+            android:name=".ui.MealList.SingleMealViewActivity"
             android:label="@string/title_activity_simle_meal_view"
-            android:parentActivityName=".ui.MealListActivity"
+            android:parentActivityName=".ui.MealList.MealListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gvader.diethelper.ui.MealListActivity" />
+                android:value="com.gvader.diethelper.ui.MealList.MealListActivity" />
         </activity>
-        <activity android:name=".ui.SingleMealEditActivity" />
+        <activity android:name=".ui.MealList.SingleMealEditActivity" />
         <activity
-            android:name=".ui.NewMealActivity"
+            android:name=".ui.MealList.NewMealActivity"
             android:label="@string/title_activity_new_meal"
-            android:parentActivityName=".ui.MealListActivity"
+            android:parentActivityName=".ui.MealList.MealListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gvader.diethelper.ui.MealListActivity" />
+                android:value="com.gvader.diethelper.ui.MealList.MealListActivity" />
         </activity>
     </application>
 

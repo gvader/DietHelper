@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.gvader.diethelper.data_model.Meal;
-import com.gvader.diethelper.ui.MealListActivity;
+import com.gvader.diethelper.ui.MealList.MealListActivity;
 
 @Entity(tableName = "meals")
 public class MealEntity implements Meal {

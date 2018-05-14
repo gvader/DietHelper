@@ -20,12 +20,16 @@ public class DataRepository {
         allMeals = mealDao.getAllMeals();
     }
 
-    public void insertMeal(MealEntity mealEntity) {
-        new insertMealAsyncTask(mealDao).execute(mealEntity);
-    }
-
     public LiveData<List<MealEntity>> getAllMeals() {
         return allMeals;
+    }
+
+    public void insertMeal(MealEntity meal) {
+        new insertMealAsyncTask(mealDao).execute(meal);
+    }
+
+    public void deleteMeal(MealEntity meal) {
+        new deleteMealAsyncTask(mealDao).execute(meal);
     }
 
     private static class insertMealAsyncTask extends AsyncTask<MealEntity, Void, Void> {
@@ -38,6 +42,18 @@ public class DataRepository {
         @Override
         protected Void doInBackground(final MealEntity... params) {
             mealDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class deleteMealAsyncTask extends AsyncTask<MealEntity, Void, Void> {
+        private final MealDao mealDao;
+
+        deleteMealAsyncTask(MealDao mealDao) { this.mealDao = mealDao; }
+
+        @Override
+        protected Void doInBackground(final MealEntity... params) {
+            mealDao.delete(params[0]);
             return null;
         }
     }
