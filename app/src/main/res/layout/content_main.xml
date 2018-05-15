@@ -3,26 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <RelativeLayout
-        android:id="@+id/MainActivityImageWrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp">
-        <ImageView
-            android:id="@+id/MainActivityWelcomeImage"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/burger" />
+        android:id="@+id/MainActivityWaterWidgetWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true">
+        <com.github.lzyzsd.circleprogress.CircleProgress
+            android:id="@+id/MainActivityWaterWidgetProgressBar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            custom:circle_progress="20" />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/MainActivityButtonsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/MainActivityImageWrapper"
+        android:layout_below="@id/MainActivityWaterWidgetWrapper"
         android:layout_alignParentBottom="true"
         android:gravity="bottom">
 
