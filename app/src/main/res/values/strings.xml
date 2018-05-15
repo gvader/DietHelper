@@ -22,4 +22,5 @@
     <string name="meal_list_activity_new_meal_empty_not_saved_msg">Meal not added. Empty meal name or category.</string>
     <string name="main_activity_week_planner_button">Plan your weekly diet</string>
     <string name="meal_item_delete_button">Delete</string>
+    <string name="main_fab_submenu_add_water">Add drinked water</string>
 </resources>

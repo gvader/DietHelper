@@ -2,6 +2,7 @@ package com.gvader.diethelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -9,12 +10,20 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.gvader.diethelper.R;
 import com.gvader.diethelper.ui.MealList.MealListActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.toString();
+
+    //boolean flag to know if main FAB is in open or closed state.
+    private boolean fabExpanded = false;
+    private FloatingActionButton fabMain;
+
+    //Linear layout holding the Add submenu
+    private LinearLayout layoutFabAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,28 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Switching to Diet Log Activity");
             }
         });
+
+        fabMain = (FloatingActionButton) findViewById(R.id.MainFabSubmenuMainFab);
+
+        layoutFabAdd = (LinearLayout) findViewById(R.id.MainFabSubmenuAddWaterLayout);
+
+        /*
+         * When main FAB is clicked, it expands if not expanded already, or collapses if main FAB
+         * was open already. This adds FAB open/close behaviour
+         */
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fabExpanded) {
+                    closeSubMenusFab();
+                } else {
+                    openSubMenusFab();
+                }
+            }
+        });
+
+        //Only main FAB is visible in the beginning
+        closeSubMenusFab();
     }
 
     @Override
@@ -62,5 +93,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //closes FAB submenus
+    private void closeSubMenusFab(){
+        layoutFabAdd.setVisibility(View.INVISIBLE);
+        fabMain.setImageResource(R.drawable.ic_add_black_24dp);
+        fabExpanded = false;
+    }
+
+    //Opens FAB submenus
+    private void openSubMenusFab(){
+        layoutFabAdd.setVisibility(View.VISIBLE);
+        //Change settings icon to 'X' icon
+        fabMain.setImageResource(R.drawable.ic_close_black_24dp);
+        fabExpanded = true;
     }
 }
