@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.gvader.diethelper.R;
 import com.gvader.diethelper.ui.MealList.MealListActivity;
+import com.gvader.diethelper.ui.Settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.toString();
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         }
 

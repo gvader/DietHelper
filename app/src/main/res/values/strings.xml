@@ -1,26 +1,57 @@
 <resources>
-    <string name="app_name">DietHelper</string>
+    <string name="main_app_name">DietHelper</string>
     <string name="action_settings">Settings</string>
+    <string name="action_add_meal">Add new mealEntity</string>
+
     <string name="main_activity_browse_available_meals_button">Browse Available Meals</string>
     <string name="main_activity_enter_diet_log_button">Enter Diet Log</string>
+    <string name="main_activity_week_planner_button">Plan your weekly diet</string>
+
     <string name="title_activity_meal_list">MealListActivity</string>
+    <string name="title_activity_simle_meal_view">SimleMealViewActivity</string>
+    <string name="title_activity_new_meal">NewMealActivity</string>
+
     <string name="meal_item_name_label">Name of the Meal: </string>
     <string name="meal_item_category_label">Meal category:</string>
     <string name="meal_item_description_label">Description:</string>
     <string name="menu_item_dishes_label">Dishes in the mealEntity:</string>
-    <string name="meal_dish_list_finalizer">, and more…</string>
-    <string name="title_activity_simle_meal_view">SimleMealViewActivity</string>
+    <string name="meal_item_delete_button">Delete</string>
+
     <string name="simple_meal_name_label">Meal Name</string>
-    <string name="title_activity_new_meal">NewMealActivity</string>
-    <string name="action_add_meal">Add new mealEntity</string>
+    
     <string name="new_meal_name">Name of the mealEntity</string>
     <string name="new_meal_category">Meal category</string>
     <string name="new_meal_description">Description of the mealEntity</string>
     <string name="new_meal_dish_list">List of dishes in the mealEntity</string>
     <string name="new_meal_not_added_msg">Meal not added...</string>
+
     <string name="meal_list_activity_new_meal_success_msg">New mealEntity added successfully !!!</string>
     <string name="meal_list_activity_new_meal_empty_not_saved_msg">Meal not added. Empty meal name or category.</string>
-    <string name="main_activity_week_planner_button">Plan your weekly diet</string>
-    <string name="meal_item_delete_button">Delete</string>
+
+    <string name="pref_choose_email_client">Choose email Client</string>
+    <string name="pref_summary_about">Simple app that helps you managing your diet.</string>
+    <string name="pref_app_version_summary">0.1 beta</string>
+    <string name="pref_title_app_version">Version</string>
+    <string name="pref_title_meal_list">Meal List</string>
+    <string name="pref_title_water_widget">Water Widget</string>
+    <string name="pref_header_about">About</string>
+    <string name="pref_key_send_feedback">pref_key_send_feedback</string>
+    <string name="pref_title_about">About app</string>
+    <string name="pref_title_water_widget_amount">Water amount</string>
+    <string name="pref_summary_water_widget_amount">How much water do you plan to drink every day?</string>
+    <string name="pref_key_water_widget_amount">pref_key_water_widget_amount</string>
+    <string name="pref_key_meal_list_meal_number_per_day">pref_key_meal_list_meal_number_per_day</string>
+    <string name="pref_summary_meal_list_number_per_day">Number of meal that you plan to eat per day</string>
+    <string name="pref_title_meal_list_number_per_day">Meals per day</string>
+    <string name="pref_title_send_feedback">Send Feedback</string>
+    <string name="pref_summary_send_feedback">Got any questions? Contact me.</string>
+    <string name="pref_title_meal_list_edit_names">Edit names of meals</string>
+    <string name="pref_summary_meal_list_edit_names">Set names for each meal during day.</string>
+    <string name="pref_title_meal_list_notifications">Meal notifications</string>
+    <string name="pref_summary_meal_list_notifications">Enable meal notifications?</string>
+    <string name="pref_title_about_author">Developed by:</string>
+    <string name="pref_summary_about_author">Łukasz Gwadera</string>
+    <string name="pref_key_app_version">pref_key_app_version</string>
+
     <string name="main_fab_submenu_add_water">Add drinked water</string>
 </resources>
