@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.EditTextPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
@@ -16,7 +17,7 @@ import com.gvader.diethelper.MyApplication;
 import com.gvader.diethelper.R;
 
 
-public class SettingsActivity extends AppCompatPreferenceActivity {
+public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = SettingsActivity.class.getSimpleName();
 
     @Override
@@ -25,14 +26,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // load settings fragment
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new MainPreferenceFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new MainPreferenceFragment()).commit();
     }
 
-    public static class MainPreferenceFragment extends PreferenceFragment {
-
+    public static class MainPreferenceFragment extends PreferenceFragmentCompat {
         @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.pref_main);
 
             // feedback preference click listener
@@ -44,10 +43,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     return true;
                 }
             });
-
-            // Version
-            Preference appVersionPref = findPreference(getString(R.string.pref_key_app_version));
-            appVersionPref.setSummary(MyApplication.getInstance().getAppVersion());
         }
     }
 
@@ -111,6 +106,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     Build.BRAND + "\n Device Model: " + Build.MODEL + "\n Device Manufacturer: " +
                     Build.MANUFACTURER;
         } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");

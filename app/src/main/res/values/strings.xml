@@ -52,6 +52,11 @@
     <string name="pref_title_about_author">Developed by:</string>
     <string name="pref_summary_about_author">Łukasz Gwadera</string>
     <string name="pref_key_app_version">pref_key_app_version</string>
+    <string name="pref_key_meal_categories">pref_key_meal_categories</string>
+    <string name="pref_title_meal_categories">Set meal categories.</string>
+    <string name="pref_summary_meal_categories">
+        This submenu allows you to set meal categories in number specified in option above.
+    </string>
 
     <string name="main_fab_submenu_add_water">Add drinked water</string>
 </resources>

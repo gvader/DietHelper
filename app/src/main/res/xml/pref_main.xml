@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/pref_title_meal_list">
-        <EditTextPreference
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/pref_title_meal_list">
+        <android.support.v7.preference.EditTextPreference
             android:defaultValue="5"
             android:key="@string/pref_key_meal_list_meal_number_per_day"
             android:summary="@string/pref_summary_meal_list_number_per_day"
             android:title="@string/pref_title_meal_list_number_per_day" />
 
-        <Preference
+        <android.support.v7.preference.PreferenceScreen
             android:title="@string/pref_title_meal_list_edit_names"
-            android:summary="@string/pref_summary_meal_list_edit_names" />
+            android:summary="@string/pref_summary_meal_list_edit_names" >
+
+            <com.gvader.diethelper.ui.Settings.PreferenceMealCategories
+                android:key="@string/pref_key_meal_categories"
+                android:title="@string/pref_title_meal_categories"
+                android:summary="@string/pref_summary_meal_categories" />
+
+        </android.support.v7.preference.PreferenceScreen>
 
         <SwitchPreference
             android:defaultValue="true"
             android:title="@string/pref_title_meal_list_notifications"
             android:summary="@string/pref_summary_meal_list_notifications" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_title_water_widget">
-        <EditTextPreference
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory android:title="@string/pref_title_water_widget">
+        <android.support.v7.preference.EditTextPreference
             android:defaultValue="3.5"
             android:key="@string/pref_key_water_widget_amount"
             android:title="@string/pref_title_water_widget_amount"
             android:summary="@string/pref_summary_water_widget_amount" />
 
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_header_about">
-        <Preference
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory android:title="@string/pref_header_about">
+        <android.support.v7.preference.Preference
             android:selectable="false"
             android:title="@string/pref_title_about"
             android:summary="@string/pref_summary_about" />
 
-        <Preference
+        <android.support.v7.preference.Preference
             android:selectable="false"
             android:title="@string/pref_title_about_author"
             android:summary="@string/pref_summary_about_author" />
 
-        <Preference
+        <android.support.v7.preference.Preference
             android:selectable="false"
             android:key="@string/pref_key_app_version"
             android:title="@string/pref_title_app_version"
             android:summary="@string/pref_app_version_summary" />
 
-        <Preference
+        <android.support.v7.preference.Preference
             android:key="@string/pref_key_send_feedback"
             android:title="@string/pref_title_send_feedback"
             android:summary="@string/pref_summary_send_feedback" />
 
-    </PreferenceCategory>
-</PreferenceScreen>
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>
