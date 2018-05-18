@@ -4,20 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/pref_title_meal_list">
-        <android.support.v7.preference.EditTextPreference
-            android:defaultValue="5"
-            android:key="@string/pref_key_meal_list_meal_number_per_day"
-            android:summary="@string/pref_summary_meal_list_number_per_day"
-            android:title="@string/pref_title_meal_list_number_per_day" />
-
         <android.support.v7.preference.PreferenceScreen
             android:title="@string/pref_title_meal_list_edit_names"
             android:summary="@string/pref_summary_meal_list_edit_names" >
 
-            <com.gvader.diethelper.ui.Settings.PreferenceMealCategories
-                android:key="@string/pref_key_meal_categories"
-                android:title="@string/pref_title_meal_categories"
-                android:summary="@string/pref_summary_meal_categories" />
+            <com.gvader.diethelper.ui.Settings.MealCategoriesPreference
+                android:key="@string/pref_key_meal_categories" />
 
         </android.support.v7.preference.PreferenceScreen>
 

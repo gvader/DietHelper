@@ -59,4 +59,5 @@
     </string>
 
     <string name="main_fab_submenu_add_water">Add drinked water</string>
+    <string name="meal_category_preference_add_category">Add Category</string>
 </resources>
