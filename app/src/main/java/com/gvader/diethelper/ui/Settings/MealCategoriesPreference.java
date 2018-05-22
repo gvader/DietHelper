@@ -55,18 +55,15 @@ public class MealCategoriesPreference extends Preference {
                 .getAppContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (inflater != null) {
-            final View rowView = inflater.inflate(R.layout.meal_category_item, null);
+            final CategoryView rowView = new CategoryView(MyApplication.getInstance().getAppContext());
+
             // Add the new row before the add field button
-            mainLayout.addView(
+            mainLayout.addView (
                     rowView,
                     mainLayout.getChildCount() - 1
             );
         } else {
             Log.e(TAG, "Inflater service returned null, do not adding next category!");
         }
-    }
-
-    public void onDeleteField(@NonNull View v) {
-        mainLayout.removeView((View) v.getParent());
     }
 }
